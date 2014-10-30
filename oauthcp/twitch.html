@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <title>Twitch Auth</title>
+        <link rel="stylesheet" type="text/css" href="oauthcp.css">
+        <script src="oauthcp.js"></script>
+    </head>
+    <body>
+        <div class="err" style="display:none;">We did not get an auth token. Please try again.</div>
+        <div class="err" style="display:none;">(if you already tried again, maybe try a different browser)</div>
+        <div class="desc">copy / paste the code into the application</div>
+        <input id="code" value=""></div>
+    </body>
+<script type="text/javascript">
+    var e_code = document.getElementById('code');
+    if (oauthcp.tokenAvailable()) {
+        e_code.value = oauthcp.getToken();
+    } else {
+        var es = document.getElementsByClassName('err');
+        for (var i = 0; i < es.length; i++) { es[i].style.display = 'block'; }
+        e_code.style.display = 'none';
+        document.getElementsByClassName('desc')[0].style.display = 'none';
+    }
+</script>
+</html>
